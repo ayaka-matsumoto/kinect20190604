@@ -14,6 +14,10 @@ public class Target : MonoBehaviour
 
     void Update()
     {
-        transform.Translate(0, 0, -speed * Time.deltaTime);
+        float totalTime = FindObjectOfType<CountDownTimer>().totalTime;
+        if (totalTime > 0)
+        {
+            transform.Translate(0, 0, -speed * Time.deltaTime);
+        }
     }
 }

@@ -15,6 +15,12 @@ public class SchoolwarSpawner : MonoBehaviour
             transform.position = new Vector3(Random.Range(-range, range), transform.position.y, transform.position.z);
             Instantiate(Enemy, transform.position, transform.rotation);
             yield return new WaitForSeconds(interval);
+
+            float totalTime = FindObjectOfType<CountDownTimer>().totalTime;
+            if (totalTime < 0)
+            {
+                break;
+            }
         }
     }
 

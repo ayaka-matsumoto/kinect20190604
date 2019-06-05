@@ -14,7 +14,9 @@ public class Target : MonoBehaviour
 
     void Update()
     {
-        float totalTime = FindObjectOfType<CountDownTimer>().totalTime;
+        int minute = FindObjectOfType<CountDownTimer>().minute;
+        float second = FindObjectOfType<CountDownTimer>().second;
+        float totalTime = minute * 60 + second;
         if (totalTime > 0)
         {
             transform.Translate(0, 0, -speed * Time.deltaTime);

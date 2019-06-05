@@ -36,6 +36,12 @@ public class SchoolwarPlayer : MonoBehaviour
         if(col.gameObject.name == "Meeting(Clone)")
         {
             FindObjectOfType<Score>().AddResearchPoint(10);
+
+            int minute = FindObjectOfType<CountDownTimer>().minute;
+            float second = FindObjectOfType<CountDownTimer>().second;
+
+            FindObjectOfType<CountDownTimer>().DecreaseTime(minute, second);
+
             Destroy(col.gameObject);
         }
     }

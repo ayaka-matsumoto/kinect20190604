@@ -16,7 +16,10 @@ public class SchoolwarSpawner : MonoBehaviour
             Instantiate(Enemy, transform.position, transform.rotation);
             yield return new WaitForSeconds(interval);
 
-            float totalTime = FindObjectOfType<CountDownTimer>().totalTime;
+            int minute = FindObjectOfType<CountDownTimer>().minute;
+            float second = FindObjectOfType<CountDownTimer>().second;
+            float totalTime = minute * 60 + second;
+
             if (totalTime < 0)
             {
                 break;

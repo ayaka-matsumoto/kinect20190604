@@ -5,9 +5,10 @@ using UnityEngine.UI;
 
 public class CountDownTimer : MonoBehaviour
 {
-    public float totalTime;
+    private float totalTime;
     public int minute;
     public float second;
+    public float decreaseTime; // when player get meeting target.
     public Text timerText;
     public GameObject EndText;
     private float oldSecond;
@@ -23,9 +24,11 @@ public class CountDownTimer : MonoBehaviour
     {
         if (totalTime < 0)
         {
-            //return;
+            return;
         }
-        totalTime = minute * 60 + second;
+
+        Debug.Log("countdownTotalTime:" + totalTime);
+
         totalTime -= Time.deltaTime;
 
         minute = (int) totalTime / 60;
@@ -41,5 +44,12 @@ public class CountDownTimer : MonoBehaviour
             timerText.text = "00:00";
             EndText.SetActive(true);
         }
+    }
+
+    public void DecreaseTime(int min, float sec)
+    {
+        Debug.Log(totalTime);
+        totalTime = minute * 60 + second - decreaseTime;
+        Debug.Log("after:" + totalTime);
     }
 }

@@ -40,5 +40,4 @@ public class Score : MonoBehaviour
         rPoint = rPoint + point;
     }
 
-
 }

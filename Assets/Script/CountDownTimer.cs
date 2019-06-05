@@ -21,13 +21,7 @@ public class CountDownTimer : MonoBehaviour
     }
 
     void Update()
-    {
-        if (totalTime < 0)
-        {
-            return;
-        }
-
-        Debug.Log("countdownTotalTime:" + totalTime);
+    { 
 
         totalTime -= Time.deltaTime;
 
@@ -43,13 +37,20 @@ public class CountDownTimer : MonoBehaviour
         {
             timerText.text = "00:00";
             EndText.SetActive(true);
+
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                //EndText.SetActive(false);
+                Destroy(EndText.gameObject);
+                FindObjectOfType<ShowResult>().showResult();
+            }
         }
     }
 
     public void DecreaseTime(int min, float sec)
     {
-        Debug.Log(totalTime);
         totalTime = minute * 60 + second - decreaseTime;
-        Debug.Log("after:" + totalTime);
+        ParticleSystem timeParticle = FindObjectOfType<Score>().timeParticle;
+        timeParticle.Emit(1);
     }
 }

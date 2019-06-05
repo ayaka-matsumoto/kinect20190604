@@ -7,6 +7,9 @@ public class Score : MonoBehaviour
 {
     public Text creditText;
     public Text rPointText;
+    public ParticleSystem creditParticle;
+    public ParticleSystem researchParticle;
+    public ParticleSystem timeParticle;
     private int credit;
     private int rPoint;
 
@@ -33,11 +36,13 @@ public class Score : MonoBehaviour
     public void AddCreditPoint(int point)
     {
         credit = credit + point;
+        creditParticle.Emit(1);
     }
 
     public void AddResearchPoint(int point)
     {
         rPoint = rPoint + point;
+        researchParticle.Emit(1);
     }
 
 }
